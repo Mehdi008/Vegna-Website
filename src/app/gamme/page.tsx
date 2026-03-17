@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
-import { productFamilies } from "@/content/site-data";
+import { productFamilies, universeMedia } from "@/content/site-data";
 
 export const metadata: Metadata = {
   title: "La Gamme — VEGANA",
@@ -31,6 +32,16 @@ export default function GammePage() {
               <Link href="/professionnels" className="rounded-full border border-[#c9a86a]/45 px-5 py-3 text-sm transition hover:bg-[#c9a86a]/14">
                 Recevoir le kit commercial
               </Link>
+            </div>
+
+            <div className="mt-7 grid gap-3 md:grid-cols-3">
+              {universeMedia.map((item) => (
+                <article key={item.title} className="relative h-36 overflow-hidden rounded-xl border border-white/15">
+                  <Image src={item.src} alt={item.alt} fill unoptimized sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                  <p className="absolute bottom-3 left-3 text-xs uppercase tracking-[0.12em] text-white/90">{item.title}</p>
+                </article>
+              ))}
             </div>
 
             <div className="mt-6 flex flex-wrap gap-2">

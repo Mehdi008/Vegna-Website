@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
+import { FormEvent, useEffect, useState } from "react";
 import PageIntro from "@/components/PageIntro";
 import Reveal from "@/components/Reveal";
-
-export const metadata: Metadata = {
-  title: "Professionnels — VEGANA",
-  description:
-    "Page commerciale VEGANA pour retail, distributeurs et restauration : argumentaires de vente, proposition de valeur segmentée et qualification de leads B2B."
-};
 
 const partnerSegments = [
   {
@@ -33,6 +29,17 @@ const partnerSegments = [
 ] as const;
 
 export default function ProfessionnelsPage() {
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    document.title = "Professionnels — VEGANA";
+  }, []);
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <>
       <PageIntro
@@ -93,7 +100,7 @@ export default function ProfessionnelsPage() {
               <span className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/75">Réponse sous 48h</span>
             </div>
 
-            <form className="grid gap-4 md:grid-cols-2">
+            <form onSubmit={onSubmit} className="grid gap-4 md:grid-cols-2" aria-label="Formulaire professionnel VEGANA">
               <label className="text-sm text-white/82">
                 Nom complet
                 <input required placeholder="Votre nom" className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm" />
@@ -147,6 +154,12 @@ export default function ProfessionnelsPage() {
                 Demander une mise en relation commerciale
               </button>
             </form>
+
+            {submitted ? (
+              <div className="mt-5 rounded-xl border border-[#c9a86a]/45 bg-[#c9a86a]/10 px-4 py-3 text-sm text-[#f0dcb8]">
+                Merci. Votre demande a bien été envoyée. L’équipe VEGANA vous recontacte sous 48h.
+              </div>
+            ) : null}
           </div>
         </Reveal>
       </section>

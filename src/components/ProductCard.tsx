@@ -1,8 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { ProductFamily } from "@/content/site-data";
+
+const toneMap: Record<ProductFamily["tone"], string> = {
+  gold: "from-[#c9a86a]/25 via-[#c9a86a]/10 to-transparent",
+  olive: "from-[#4a5d46]/28 via-[#4a5d46]/10 to-transparent",
+  charcoal: "from-[#2a303d]/32 via-[#2a303d]/10 to-transparent"
+};
 
 export default function ProductCard({ product }: { product: ProductFamily }) {
   return (
@@ -11,8 +18,18 @@ export default function ProductCard({ product }: { product: ProductFamily }) {
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className="group relative overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-white/10 to-white/[0.03] p-5 shadow-[0_20px_60px_rgba(0,0,0,.35)] md:p-6"
     >
-      <div className="relative mb-5 h-36 overflow-hidden rounded-xl border border-white/10 bg-[radial-gradient(circle_at_30%_35%,rgba(201,168,106,0.4),transparent_52%),radial-gradient(circle_at_75%_65%,rgba(70,86,67,0.45),transparent_56%),#13171e]">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+      <div className={`pointer-events-none absolute -inset-x-8 -top-12 h-28 bg-gradient-to-b ${toneMap[product.tone]}`} />
+
+      <div className="relative mb-5 h-40 overflow-hidden rounded-xl border border-white/10">
+        <Image
+          src={product.media.src}
+          alt={product.media.alt}
+          fill
+          unoptimized
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="object-cover transition duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
         <p className="absolute bottom-3 left-3 rounded-full bg-black/35 px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-white/90">
           {product.name}
         </p>

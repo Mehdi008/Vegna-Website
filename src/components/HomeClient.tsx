@@ -1,10 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
-import { differentiators, productFamilies } from "@/content/site-data";
+import { differentiators, heroMedia, productFamilies, universeMedia } from "@/content/site-data";
 
 export default function HomeClient() {
   const { scrollYProgress } = useScroll();
@@ -15,38 +16,45 @@ export default function HomeClient() {
     <>
       <section className="relative isolate overflow-hidden pb-20 pt-14 md:pb-28 md:pt-24">
         <div className="hero-layer" />
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="section-shell relative z-10">
-          <p className="eyebrow">Marque tunisienne premium</p>
-          <h1 className="display mt-4 max-w-5xl text-6xl leading-[0.86] md:text-8xl">
-            VEGANA. Le goût du futur, enraciné en Tunisie.
-          </h1>
-          <p className="mt-7 max-w-3xl text-lg text-white/80 md:text-xl">
-            Une marque végétale type viande conçue pour créer du désir immédiat, rassurer par la qualité et convertir en achat comme en partenariat.
-          </p>
+        <div className="section-shell relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <motion.div style={{ y: heroY, opacity: heroOpacity }}>
+            <p className="eyebrow">Marque tunisienne premium</p>
+            <h1 className="display mt-4 max-w-5xl text-6xl leading-[0.86] md:text-8xl">VEGANA. Le goût du futur, enraciné en Tunisie.</h1>
+            <p className="mt-7 max-w-2xl text-lg text-white/80 md:text-xl">
+              Une marque végétale type viande conçue pour créer du désir immédiat, rassurer par la qualité et convertir en achat comme en partenariat.
+            </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="/gamme" className="rounded-full bg-[#c9a86a] px-6 py-3 text-sm font-semibold text-[#121418]">
-              Découvrir la gamme
-            </Link>
-            <Link
-              href="/professionnels"
-              className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Devenir distributeur / revendeur
-            </Link>
-          </div>
-        </motion.div>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link href="/gamme" className="rounded-full bg-[#c9a86a] px-6 py-3 text-sm font-semibold text-[#121418]">
+                Découvrir la gamme
+              </Link>
+              <Link
+                href="/professionnels"
+                className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Devenir distributeur / revendeur
+              </Link>
+            </div>
+          </motion.div>
 
-        <div className="section-shell relative z-10 mt-12 grid gap-4 md:mt-16 md:grid-cols-3">
-          {[
-            "Pensé pour le goût",
-            "Design produit premium",
-            "Conversion B2C + B2B"
-          ].map((chip, i) => (
-            <Reveal key={chip} delay={i * 0.06}>
-              <div className="glass rounded-xl px-4 py-3 text-sm text-white/85">{chip}</div>
-            </Reveal>
-          ))}
+          <Reveal>
+            <div className="relative h-[420px] overflow-hidden rounded-[28px] border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,.42)] lg:h-[520px]">
+              <Image
+                src={heroMedia.src}
+                alt={heroMedia.alt}
+                fill
+                unoptimized
+                priority
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/20 bg-black/30 p-4 backdrop-blur">
+                <p className="eyebrow">Launch signature</p>
+                <p className="mt-1 text-sm text-white/86">Produit désiré. Marque mémorable. Conversion commerciale.</p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -58,6 +66,20 @@ export default function HomeClient() {
             </p>
           </div>
         </Reveal>
+      </section>
+
+      <section className="section-shell py-8 md:py-12">
+        <div className="grid gap-4 md:grid-cols-3">
+          {universeMedia.map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.05}>
+              <article className="relative h-56 overflow-hidden rounded-2xl border border-white/15">
+                <Image src={item.src} alt={item.alt} fill unoptimized sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
+                <p className="absolute bottom-4 left-4 text-sm font-medium text-white">{item.title}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <section className="section-shell py-10 md:py-16">
@@ -82,19 +104,36 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <section className="relative py-14">
-        <div className="section-shell">
+      <section className="section-shell py-14">
+        <div className="grid gap-5 lg:grid-cols-[1fr_1.05fr] lg:items-stretch">
           <Reveal>
-            <div className="rounded-3xl border border-[#c9a86a]/30 bg-[linear-gradient(120deg,#1b212b_0%,#11151d_55%,#131821_100%)] p-7 md:p-12">
+            <div className="panel-deep rounded-3xl p-7 md:p-11">
               <p className="eyebrow">Pourquoi VEGANA</p>
-              <h2 className="display mt-2 text-4xl md:text-6xl">Différenciation claire, perception premium immédiate.</h2>
-
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <h2 className="display mt-3 text-4xl md:text-5xl">Différenciation claire, perception premium immédiate.</h2>
+              <div className="mt-7 grid gap-3">
                 {differentiators.map((item, index) => (
                   <Reveal key={item} delay={index * 0.04}>
-                    <div className="glass rounded-2xl p-5 text-white/86">{item}</div>
+                    <div className="glass rounded-xl p-4 text-white/86">{item}</div>
                   </Reveal>
                 ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="relative min-h-[420px] overflow-hidden rounded-3xl border border-white/15">
+              <Image
+                src={universeMedia[0].src}
+                alt="Visual éditorial de différenciation VEGANA"
+                fill
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/15 bg-black/30 p-4">
+                <p className="eyebrow">Signature brand</p>
+                <p className="mt-2 text-white/85">Une identité food-first capable de séduire le consommateur et de rassurer l’acheteur.</p>
               </div>
             </div>
           </Reveal>
