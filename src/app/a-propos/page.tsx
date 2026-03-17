@@ -1,11 +1,11 @@
-import { PageHero } from "@/components/sections/page-hero";
+import PageIntro from "@/components/PageIntro";
 
 export default function AProposPage() {
   return (
-    <PageHero
+    <PageIntro
       eyebrow="À propos"
-      title="Une ambition tunisienne de nouvelle génération."
-      description="VEGANA construit une marque alimentaire premium où le local devient une force de désir, de qualité perçue et de projection internationale."
+      title="Une ambition tunisienne, une exécution premium, une vision de marché."
+      text="VEGANA est née pour transformer les légumineuses locales en produits contemporains désirables, capables d’élever les usages quotidiens et les standards du végétal dans la région."
     />
   );
 }

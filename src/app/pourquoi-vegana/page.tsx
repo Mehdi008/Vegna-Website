@@ -1,13 +1,30 @@
-import { PageHero } from "@/components/sections/page-hero";
+import PageIntro from "@/components/PageIntro";
+import Reveal from "@/components/Reveal";
+
+const points = [
+  "Une identité tunisienne premium, sans cliché, immédiatement mémorable.",
+  "Des produits pensés d’abord pour le goût et la texture.",
+  "Une narration de marque qui convertit autant le consommateur que l’acheteur pro.",
+  "Un langage visuel éditorial, contemporain et commercialement fort."
+];
 
 export default function PourquoiVeganaPage() {
   return (
     <>
-      <PageHero
+      <PageIntro
         eyebrow="Pourquoi VEGANA"
-        title="Une marque qui réconcilie désir culinaire et exigence business."
-        description="VEGANA incarne la rencontre entre racines tunisiennes, modernité produit et narration premium. Notre différence n’est pas déclarative : elle se goûte, elle se voit, elle se vend."
+        title="Une marque construite pour être désirée, puis référencée."
+        text="VEGANA combine plaisir culinaire, élégance de marque et crédibilité opérationnelle pour installer une présence marché ambitieuse dès le lancement."
       />
+      <section className="section-shell pb-24">
+        <div className="grid gap-4 md:grid-cols-2">
+          {points.map((item, i) => (
+            <Reveal key={item} delay={i * 0.06}>
+              <div className="glass rounded-2xl p-6 text-white/85">{item}</div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
