@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  @apply bg-cream-light text-graphite font-body antialiased;
+}
+
+::selection {
+  @apply bg-brand-gold/40 text-graphite;
+}
+
+.container-premium {
+  @apply mx-auto w-full max-w-[1280px] px-5 md:px-8;
+}
+
+.eyebrow {
+  @apply uppercase tracking-[0.22em] text-xs font-medium text-olive-deep/80;
+}
+
+.display-title {
+  @apply font-display text-4xl md:text-6xl leading-[0.9] tracking-tight;
+}
