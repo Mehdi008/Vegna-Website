@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import PageIntro from "@/components/PageIntro";
 import { faqs } from "@/content/site-data";
+
+export const metadata: Metadata = {
+  title: "FAQ",
+  description:
+    "Questions fréquentes VEGANA : produits, distribution, restauration et prise de contact commerciale.",
+  openGraph: {
+    title: "FAQ — VEGANA",
+    description: "Réponses directes pour clients, revendeurs et partenaires.",
+    images: [{ url: "/og-default.svg", width: 1200, height: 630, alt: "VEGANA" }]
+  }
+};
 
 export default function FaqPage() {
   return (

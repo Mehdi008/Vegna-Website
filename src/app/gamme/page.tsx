@@ -7,9 +7,15 @@ import Reveal from "@/components/Reveal";
 import { productFamilies, universeMedia } from "@/content/site-data";
 
 export const metadata: Metadata = {
-  title: "La Gamme — VEGANA",
+  title: "La Gamme",
   description:
-    "Découvrez les 6 familles VEGANA : signatures sensorielles premium, usages culinaires désirables et valeur commerciale claire pour retail et restauration."
+    "Découvrez les 6 familles VEGANA : signatures sensorielles premium, usages culinaires désirables et valeur commerciale claire pour retail et restauration.",
+  openGraph: {
+    title: "La Gamme — VEGANA",
+    description:
+      "Steak, haché, burger, émincé, escalope et boulettes végétales : une collection premium construite pour vendre.",
+    images: [{ url: "/og-default.svg", width: 1200, height: 630, alt: "VEGANA" }]
+  }
 };
 
 export default function GammePage() {

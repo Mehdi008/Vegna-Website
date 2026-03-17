@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import PageIntro from "@/components/PageIntro";
 import Reveal from "@/components/Reveal";
+
+export const metadata: Metadata = {
+  title: "Pourquoi VEGANA",
+  description:
+    "Découvrez le positionnement VEGANA : marque tunisienne premium, goût prioritaire, identité forte et crédibilité commerciale.",
+  openGraph: {
+    title: "Pourquoi VEGANA",
+    description: "Piliers de différenciation, perception premium et promesse de marque VEGANA.",
+    images: [{ url: "/og-default.svg", width: 1200, height: 630, alt: "VEGANA" }]
+  }
+};
 
 const points = [
   "Une identité tunisienne premium, sans cliché, immédiatement mémorable.",

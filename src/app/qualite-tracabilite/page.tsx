@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import PageIntro from "@/components/PageIntro";
 import Reveal from "@/components/Reveal";
+
+export const metadata: Metadata = {
+  title: "Qualité & Traçabilité",
+  description:
+    "VEGANA détaille son socle qualité : sourcing lisible, formulation maîtrisée et contrôle rigoureux pour rassurer consommateurs et partenaires.",
+  openGraph: {
+    title: "Qualité & Traçabilité",
+    description: "La preuve qui rassure sans casser le désir de marque.",
+    images: [{ url: "/og-default.svg", width: 1200, height: 630, alt: "VEGANA" }]
+  }
+};
 
 const qualityBlocks = [
   {

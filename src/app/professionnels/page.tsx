@@ -1,8 +1,19 @@
-"use client";
-
-import { FormEvent, useEffect, useState } from "react";
+import type { Metadata } from "next";
+import ProfessionalLeadForm from "@/components/forms/ProfessionalLeadForm";
 import PageIntro from "@/components/PageIntro";
 import Reveal from "@/components/Reveal";
+
+export const metadata: Metadata = {
+  title: "Professionnels",
+  description:
+    "Page commerciale VEGANA pour retail, distributeurs et restauration : argumentaires de vente, proposition de valeur segmentée et qualification de leads B2B.",
+  openGraph: {
+    title: "Professionnels",
+    description:
+      "Partenariat retail, distribution et foodservice avec VEGANA : marque premium, gamme vendable, activation commerciale rapide.",
+    images: [{ url: "/og-default.svg", width: 1200, height: 630, alt: "VEGANA" }]
+  }
+};
 
 const partnerSegments = [
   {
@@ -29,17 +40,6 @@ const partnerSegments = [
 ] as const;
 
 export default function ProfessionnelsPage() {
-  const [submitted, setSubmitted] = useState(false);
-
-  useEffect(() => {
-    document.title = "Professionnels — VEGANA";
-  }, []);
-
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
     <>
       <PageIntro
@@ -100,66 +100,7 @@ export default function ProfessionnelsPage() {
               <span className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/75">Réponse sous 48h</span>
             </div>
 
-            <form onSubmit={onSubmit} className="grid gap-4 md:grid-cols-2" aria-label="Formulaire professionnel VEGANA">
-              <label className="text-sm text-white/82">
-                Nom complet
-                <input required placeholder="Votre nom" className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm" />
-              </label>
-
-              <label className="text-sm text-white/82">
-                Email professionnel
-                <input required type="email" placeholder="nom@entreprise.com" className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm" />
-              </label>
-
-              <label className="text-sm text-white/82">
-                Entreprise
-                <input placeholder="Nom de l’entreprise" className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm" />
-              </label>
-
-              <label className="text-sm text-white/82">
-                Type de partenaire
-                <select required className="mt-2 w-full rounded-xl border border-white/20 bg-[#12171f] px-4 py-3 text-sm">
-                  <option value="">Choisir un segment</option>
-                  <option>Retail</option>
-                  <option>Distributeur</option>
-                  <option>Restaurant / Foodservice</option>
-                </select>
-              </label>
-
-              <label className="text-sm text-white/82">
-                Volume estimé / mois
-                <select className="mt-2 w-full rounded-xl border border-white/20 bg-[#12171f] px-4 py-3 text-sm">
-                  <option value="">Sélectionner un volume</option>
-                  <option>&lt; 100 unités</option>
-                  <option>100 - 500 unités</option>
-                  <option>500 - 2000 unités</option>
-                  <option>2000+ unités</option>
-                </select>
-              </label>
-
-              <label className="text-sm text-white/82">
-                Ville / zone
-                <input placeholder="Ex: Tunis / Grand Tunis" className="mt-2 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm" />
-              </label>
-
-              <label className="text-sm text-white/82 md:col-span-2">
-                Objectif commercial
-                <textarea
-                  placeholder="Décrivez vos canaux de vente, typologie de points de vente, et objectifs commerciaux."
-                  className="mt-2 min-h-32 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm"
-                />
-              </label>
-
-              <button type="submit" className="rounded-full bg-[#c9a86a] px-6 py-3 text-sm font-semibold text-[#111317] md:col-span-2 md:justify-self-start">
-                Demander une mise en relation commerciale
-              </button>
-            </form>
-
-            {submitted ? (
-              <div className="mt-5 rounded-xl border border-[#c9a86a]/45 bg-[#c9a86a]/10 px-4 py-3 text-sm text-[#f0dcb8]">
-                Merci. Votre demande a bien été envoyée. L’équipe VEGANA vous recontacte sous 48h.
-              </div>
-            ) : null}
+            <ProfessionalLeadForm />
           </div>
         </Reveal>
       </section>
