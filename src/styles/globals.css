@@ -5,8 +5,9 @@
 :root {
   --bg: #0f1115;
   --surface: #171b22;
+  --surface-soft: #1e2530;
   --text: #f5efe4;
-  --muted: #b0b7c3;
+  --muted: #b7beca;
   --gold: #c9a86a;
   --olive: #465643;
 }
@@ -15,9 +16,23 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at 20% 0%, #202733 0%, #0f1115 42%);
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 500px at 80% -5%, rgba(201, 168, 106, 0.18), transparent 60%),
+    radial-gradient(800px 500px at 15% 10%, rgba(70, 86, 67, 0.24), transparent 65%),
+    linear-gradient(180deg, #0f1115 0%, #11161f 38%, #0f1115 100%);
   color: var(--text);
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body), Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  padding-bottom: 90px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
 }
 
 * {
@@ -38,13 +53,27 @@ a {
 }
 
 .display {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
 }
 
 .glass {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+}
+
+.panel-deep {
+  background: linear-gradient(145deg, rgba(23, 27, 34, 0.96), rgba(15, 17, 21, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(600px 300px at 15% 30%, rgba(201, 168, 106, 0.24), transparent 70%),
+    radial-gradient(900px 520px at 90% 20%, rgba(93, 116, 87, 0.18), transparent 72%);
 }
 
 @media (prefers-reduced-motion: reduce) {
